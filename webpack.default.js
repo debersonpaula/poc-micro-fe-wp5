@@ -32,7 +32,8 @@ module.exports = ({ appName, port, remotes = null }) => ({
     new ModuleFederationPlugin({
       name: appName,
       remotes: remotes || {},
-      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      // shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      shared: ["react", "react-dom"],
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({

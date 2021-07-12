@@ -1,17 +1,15 @@
-import React from 'react';
+import React from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
+const theme = createTheme({});
 
 const App = () => {
   return (
-    <div
-      style={{
-        margin: '10px',
-        padding: '10px',
-        textAlign: 'center',
-        backgroundColor: 'cyan',
-      }}
-    >
+    <ThemeProvider theme={theme}>
       <h1>App 1</h1>
-    </div>
+      <CssBaseline />
+    </ThemeProvider>
   );
 };
 
