@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 
-module.exports = ({ appName, port, remotes = null }) => ({
+module.exports = ({ appName, port, remotes = null, exposes = null }) => ({
   entry: "./src/index.ts",
   mode: "development",
   devServer: {
@@ -18,12 +18,21 @@ module.exports = ({ appName, port, remotes = null }) => ({
   },
   module: {
     rules: [
+      // {
+      //   test: /\.(ts|tsx|js|mjs|jsx)$/,
+      //   loader: "babel-loader",
+      //   exclude: /node_modules/,
+      //   options: {
+      //     presets: ["@babel/preset-react", "@babel/preset-typescript"],
+      //   },
+      // },
       {
-        test: /\.(ts|tsx|js|mjs|jsx)$/,
-        loader: "babel-loader",
+        test: /\.tsx?$/,
+        loader: "esbuild-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react", "@babel/preset-typescript"],
+          target: "es2015",
+          loader: "tsx",
         },
       },
     ],
@@ -32,8 +41,8 @@ module.exports = ({ appName, port, remotes = null }) => ({
     new ModuleFederationPlugin({
       name: appName,
       remotes: remotes || {},
-      // shared: { react: { singleton: true }, "react-dom": { singleton: true } },
-      shared: ["react", "react-dom"],
+      exposes: exposes || {},
+      shared: ["react", "react-dom", "@material-ui/styles"],
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({

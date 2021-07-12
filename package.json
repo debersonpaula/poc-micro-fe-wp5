@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "app-main"
+      "app-main",
+      "mod-header"
     ]
   },
   "scripts": {
