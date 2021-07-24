@@ -15,6 +15,9 @@ module.exports = ({ appName, port, remotes = null, exposes = null }) => ({
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
+    alias: {
+      "@component": "./component",
+    },
   },
   module: {
     rules: [

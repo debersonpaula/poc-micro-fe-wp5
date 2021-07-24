@@ -1,12 +1,12 @@
 {
   "name": "poc-micro-fe-wp5-root",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "app-main",
-      "mod-header"
-    ]
-  },
+  "workspaces": [
+    "app-main",
+    "mod-app",
+    "mod-header",
+    "library"
+  ],
   "scripts": {
     "start": "lerna run --parallel start",
     "build": "lerna run build"
