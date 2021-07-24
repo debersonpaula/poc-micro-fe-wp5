@@ -1,0 +1,23 @@
+{
+  "name": "mod-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsrx start config.js",
+    "build": "tsrx expose config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "library": "0.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.14",
+    "@types/react-dom": "17.0.9",
+    "tsrx": "1.0.0-beta.16"
+  }
+}
