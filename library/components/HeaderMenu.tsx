@@ -1,23 +1,28 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { MenuGroup, MenuItem } from "../helpers/createGroupMenu";
 import HeaderMenuItemContent from "./HeaderMenuItemContent";
 import Menu from "@material-ui/core/Menu";
 import MuiMenuItem from "@material-ui/core/MenuItem";
 
-function HeaderMenu({
-  group,
-  onClose,
-}: {
+const HeaderMenu = forwardRef<HTMLDivElement, HeaderMenuProps>(
+  ({ group, onClose }, ref) => {
+    const items = [];
+    Object.keys(group).forEach((label, index) => {
+      items.push(
+        <HeaderMenuItem key={label + index} item={group[label]} label={label} />
+      );
+    });
+    return (
+      <div ref={ref} style={{ display: "flex" }}>
+        {items}
+      </div>
+    );
+  }
+);
+
+interface HeaderMenuProps {
   group: MenuGroup;
   onClose?: () => void;
-}) {
-  const items = [];
-  Object.keys(group).forEach((label, index) => {
-    items.push(
-      <HeaderMenuItem key={label + index} item={group[label]} label={label} />
-    );
-  });
-  return <>{items}</>;
 }
 
 function HeaderMenuItem({
@@ -37,7 +42,7 @@ function HeaderMenuItem({
 
   const handleClose = () => {
     setAnchorEl(null);
-    onClose && onClose();
+    // onClose && onClose();
   };
 
   return (
@@ -45,8 +50,7 @@ function HeaderMenuItem({
       <HeaderMenuItemContent
         label={label}
         link={item.link}
-        onMouseOver={item.submenu && handleClick}
-        onClose={handleClose}
+        onClick={item.submenu && handleClick}
       />
       {item.submenu && (
         <Menu

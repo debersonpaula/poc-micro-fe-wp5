@@ -5,19 +5,13 @@ import MuiMenuItem from "@material-ui/core/MenuItem";
 export default function HeaderMenuItemContent({
   label,
   link,
-  onMouseOver,
-  onClose,
+  onClick,
 }: {
   label: string;
   link: string;
-  onMouseOver: MouseEventHandler<any>;
-  onClose: () => void;
+  onClick: MouseEventHandler<any>;
 }) {
-  const content = (
-    <MuiMenuItem onClick={onClose} onMouseOver={onMouseOver}>
-      {label}
-    </MuiMenuItem>
-  );
+  const content = <MuiMenuItem onClick={onClick}>{label}</MuiMenuItem>;
 
   if (link) {
     return (
