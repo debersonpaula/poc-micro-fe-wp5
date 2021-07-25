@@ -1,17 +1,30 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
+import React, { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
+import MuiMenuItem from "@material-ui/core/MenuItem";
 
 export default function HeaderMenuItemContent({
   label,
   link,
+  onMouseOver,
+  onClose,
 }: {
   label: string;
   link: string;
+  onMouseOver: MouseEventHandler<any>;
+  onClose: () => void;
 }) {
-  const content = <Typography variant="h6">{label}</Typography>;
+  const content = (
+    <MuiMenuItem onClick={onClose} onMouseOver={onMouseOver}>
+      {label}
+    </MuiMenuItem>
+  );
+
   if (link) {
-    return <Link to={link}>{content}</Link>;
+    return (
+      <Link to={link} style={{ color: "inherit", textDecoration: "none" }}>
+        {content}
+      </Link>
+    );
   }
   return content;
 }

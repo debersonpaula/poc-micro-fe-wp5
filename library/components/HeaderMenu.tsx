@@ -1,15 +1,16 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import ThemeProvider from "@material-ui/styles/ThemeProvider";
-import createTheme, { Theme } from "@material-ui/core/styles/createTheme";
 import { MenuGroup, MenuItem } from "../helpers/createGroupMenu";
-import MuiButton from "@material-ui/core/Button";
-import MuiMenu from "@material-ui/core/Menu";
+import HeaderMenuItemContent from "./HeaderMenuItemContent";
+import Menu from "@material-ui/core/Menu";
 import MuiMenuItem from "@material-ui/core/MenuItem";
 
-import HeaderMenuItemContent from "./HeaderMenuItemContent";
-
-function HeaderMenu({ group }: { group: MenuGroup }) {
+function HeaderMenu({
+  group,
+  onClose,
+}: {
+  group: MenuGroup;
+  onClose?: () => void;
+}) {
   const items = [];
   Object.keys(group).forEach((label, index) => {
     items.push(
@@ -19,7 +20,15 @@ function HeaderMenu({ group }: { group: MenuGroup }) {
   return <>{items}</>;
 }
 
-function HeaderMenuItem({ item, label }: { item: MenuItem; label: string }) {
+function HeaderMenuItem({
+  item,
+  label,
+  onClose,
+}: {
+  item: MenuItem;
+  label: string;
+  onClose?: () => void;
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -28,13 +37,27 @@ function HeaderMenuItem({ item, label }: { item: MenuItem; label: string }) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    onClose && onClose();
   };
 
   return (
     <div>
-      <MuiButton color="inherit" onClick={item.submenu && handleClick}>
-        <HeaderMenuItemContent label={label} link={item.link} />
-      </MuiButton>
+      <HeaderMenuItemContent
+        label={label}
+        link={item.link}
+        onMouseOver={item.submenu && handleClick}
+        onClose={handleClose}
+      />
+      {item.submenu && (
+        <Menu
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <HeaderMenu group={item.submenu} onClose={handleClose} />
+        </Menu>
+      )}
     </div>
   );
 }
