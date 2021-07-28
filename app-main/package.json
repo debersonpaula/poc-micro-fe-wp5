@@ -16,6 +16,6 @@
   "devDependencies": {
     "@types/react": "17.0.14",
     "@types/react-dom": "17.0.9",
-    "tsrx": "1.0.0-beta.16"
+    "tsrx": "1.0.0-beta.20"
   }
 }
