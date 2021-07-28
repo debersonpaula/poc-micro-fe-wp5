@@ -12,16 +12,18 @@ const App: AppType = ({ modules }) => {
         <Suspense fallback="">
           <RemoteModHeader modules={modules} />
         </Suspense>
-        <Switch>
-          {modules.map((mod, index) => (
-            <Route
-              key={index}
-              path={mod.path}
-              exact={mod.exact}
-              component={mod.component}
-            />
-          ))}
-        </Switch>
+        <Suspense fallback="loading component">
+          <Switch>
+            {modules.map((mod, index) => (
+              <Route
+                key={index}
+                path={mod.path}
+                exact={mod.exact}
+                component={mod.component}
+              />
+            ))}
+          </Switch>
+        </Suspense>
       </HashRouter>
     </AppComponent>
   );

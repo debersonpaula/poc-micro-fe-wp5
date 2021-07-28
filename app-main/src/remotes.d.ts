@@ -14,3 +14,15 @@ declare module "modApp/App" {
 
   export default App;
 }
+
+declare module "modHome/App" {
+  const App: React.ComponentType;
+
+  export default App;
+}
+
+declare module "modAbout/App" {
+  const App: React.ComponentType;
+
+  export default App;
+}

@@ -16,7 +16,7 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
     host: "localhost",
     // development server
     devServer: {
-      open: true,
+      open: false,
       // contentBase: "./dist",
     },
     // skip config file

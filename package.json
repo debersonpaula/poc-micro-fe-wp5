@@ -6,6 +6,7 @@
     "mod-app",
     "mod-header",
     "mod-home",
+    "mod-about",
     "library"
   ],
   "scripts": {
