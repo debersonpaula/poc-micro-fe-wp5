@@ -5,6 +5,7 @@
     "app-main",
     "mod-app",
     "mod-header",
+    "mod-home",
     "library"
   ],
   "scripts": {
