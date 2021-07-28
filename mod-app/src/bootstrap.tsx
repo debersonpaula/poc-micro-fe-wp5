@@ -1,22 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AppComponent from "library/components/AppComponent";
 import App from "./App";
 
 ReactDOM.render(
-  <AppComponent>
-    <App
-      modules={[
-        { path: "/", menuPath: "Home", exact: true, component: HomeComponent },
-        {
-          path: "/another",
-          menuPath: "Another",
-          exact: true,
-          component: AnotherComponent,
-        },
-      ]}
-    />
-  </AppComponent>,
+  <App
+    modules={[
+      { path: "/", menuPath: "Home", exact: true, component: HomeComponent },
+      {
+        path: "/another",
+        menuPath: "Another",
+        exact: true,
+        component: AnotherComponent,
+      },
+    ]}
+  />,
   document.getElementById("root")
 );
 

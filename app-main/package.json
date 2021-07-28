@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack --mode production"
+    "start": "tsrx start config.js",
+    "build": "tsrx build config.js"
   },
   "author": "",
   "license": "ISC",
