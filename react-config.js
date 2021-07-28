@@ -25,7 +25,7 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
     // wp5 Module Federation
     moduleFederationOptions: {
       name: appName,
-      shared: ["react", "react-dom", "@material-ui/styles"],
+      shared: ["react", "react-dom", "@material-ui/styles", "react-router-dom"],
       filename: "remoteEntry.js",
       exposes: expose
         ? {
