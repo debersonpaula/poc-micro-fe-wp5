@@ -17,7 +17,7 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
     // development server
     devServer: {
       open: true,
-      contentBase: "./dist",
+      // contentBase: "./dist",
     },
     // skip config file
     skipConfigFile: true,
@@ -25,23 +25,7 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
     // wp5 Module Federation
     moduleFederationOptions: {
       name: appName,
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: "17.0.2",
-          eager: true,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: "17.0.2",
-          eager: true,
-        },
-        "@material-ui/styles": {
-          singleton: true,
-          requiredVersion: "5.0.0-alpha.20",
-          eager: true,
-        },
-      },
+      shared: ["react", "react-dom", "@material-ui/styles"],
       filename: "remoteEntry.js",
       exposes: expose
         ? {
@@ -52,7 +36,7 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
     },
 
     // custom wp config
-    webpack: (config) => {
-      config.output.publicPath = "/";
-    },
+    // webpack: (config) => {
+    //   config.output.publicPath = "auto";
+    // },
   });
