@@ -5,7 +5,7 @@ import App from "./App";
 
 ReactDOM.render(
   <AppComponent>
-    <App />
+    <App modules={[]} />
   </AppComponent>,
   document.getElementById("root")
 );
