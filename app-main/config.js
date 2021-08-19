@@ -6,6 +6,7 @@ module.exports = configurator({
   appName,
   port,
   expose: false,
+  open: true,
   remotes: {
     modApp: "modApp@http://localhost:4001/remoteEntry.js",
     modHome: "modHome@http://localhost:4002/remoteEntry.js",

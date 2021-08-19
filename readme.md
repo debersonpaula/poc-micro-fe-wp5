@@ -2,23 +2,32 @@
 
 This sample was designed to be a boilerplate for micro-frontend architecture, by using Webpack 5 and ModuleFederationPlugin.
 
----
-
-## Module: __mod-app__
-
-Application encapsulation, provides theming, data and routing for all modules.
-
-### Requires
-- library
-- mod-header
+It uses the monorepo concept with workspaces.
 
 ---
 
-## Module: __mod-header__
+## Yarn
 
-AppBar header with menu.
+This project uses Yarn V.3. It's already set. Before running the project, the script below must be executed in the root of this project:
 
-### Requires
-- library
+```sh
+yarn set version berry
+```
 
 ---
+
+## Install deps
+
+Run `yarn` in the root of this project. This will install all dependencies for all projects.
+
+---
+
+## Run all project
+
+Run the script below in a bash based console:
+
+```sh
+./start.sh
+```
+
+Application will be opened into http://localhost:5000

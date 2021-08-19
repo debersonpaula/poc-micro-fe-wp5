@@ -9,11 +9,9 @@
     "mod-about",
     "library"
   ],
-  "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build"
-  },
-  "devDependencies": {
-    "lerna": "4.0.0"
+  "scripts": {},
+  "packageManager": "yarn@3.0.1",
+  "dependencies": {
+    "concurrently": "6.2.1"
   }
 }

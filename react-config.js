@@ -1,6 +1,12 @@
 const { DefaultConfig } = require("tsrx/tools");
 
-module.exports = ({ appName, port, expose = false, remotes = null }) =>
+module.exports = ({
+  appName,
+  port,
+  expose = false,
+  remotes = null,
+  open = false,
+}) =>
   DefaultConfig({
     // source of files
     // sourcePath: appPath,
@@ -16,7 +22,7 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
     host: "localhost",
     // development server
     devServer: {
-      open: false,
+      open,
       // contentBase: "./dist",
     },
     // skip config file
@@ -34,9 +40,4 @@ module.exports = ({ appName, port, expose = false, remotes = null }) =>
         : {},
       remotes: remotes || {},
     },
-
-    // custom wp config
-    // webpack: (config) => {
-    //   config.output.publicPath = "auto";
-    // },
   });
